@@ -1038,6 +1038,7 @@
     </div>
   </section>
 
+  <!-- Add to Cart Modal -->
   <div id="addToCartModal" class="modal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -1163,8 +1164,16 @@
   </footer>
   <script>
     function openModal(productId, productName, productPrice) {
-      const modal = document.getElementById('addToCartModal');
-      modal.style.display = 'flex'; // Display the modal
+      const userId = sessionStorage.getItem('userId');
+      if (!userId) {
+          window.location.href = 'login/login.html';
+          return;
+      }
+
+      document.getElementById('productId').value = productId;
+      document.getElementById('addToCartModal').style.display = 'flex';
+   //   const modal = document.getElementById('addToCartModal');
+     // modal.style.display = 'flex'; // Display the modal
 
       // Update modal content with product details
       document.getElementById('modalProductName').textContent = productName;

@@ -26,7 +26,10 @@ try {
         if ($result->num_rows === 1) {
             $row = $result->fetch_assoc();
             if ($password === $row['password']) {
+                $_SESSION['userId'] = $row['id'];
+                $_SESSION['userRole'] = $row['role'];
                 $response['status'] = 'success';
+                $response['userId'] = $row['id'];
                 $response['role'] = $row['role'];
                 $response['message'] = 'Login successful';
                 // Here you can set session variables or handle the logged-in user

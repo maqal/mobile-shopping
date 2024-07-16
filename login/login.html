@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .container {
             width: 100%;
             max-width: 500px;
@@ -21,20 +23,24 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-group {
             margin-bottom: 15px;
             text-align: center;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
             text-align: left;
         }
+
         .form-group input {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
         }
+
         .form-group button {
             padding: 10px 15px;
             background-color: #007BFF;
@@ -44,11 +50,13 @@
             border-radius: 3px;
             width: 100%;
         }
+
         .form-group button:disabled {
             background-color: #ccc;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2 style="text-align: center;">Login</h2>
@@ -68,39 +76,43 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
             event.preventDefault();
             document.getElementById('submitBtn').disabled = true;
 
             const formData = new FormData(this);
-            formData.set('password', formData.get('password')); 
+            formData.set('password', formData.get('password'));
             fetch('login.php', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    if (data.role === 'Staff'){
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Save user ID and role in session storage
+                        sessionStorage.setItem('userId', data.userId);
+                        sessionStorage.setItem('userRole', data.role);
+                        if (data.role === 'Staff') {
 
-                        window.location.href = '../home/welcome.html'; // Redirect to a welcome page upon success
-                    }else{
-                        window.location.href = '../home/user_home.html'; // Redirect to a welcome page upon success
+                            window.location.href = '../home/welcome.html'; // Redirect to a welcome page upon success
+                        } else {
+                            window.location.href = '../home/user_home.html'; // Redirect to a welcome page upon success
 
+                        }
+                        //  alert(data.message);
+                    } else {
+                        console.error(data.message); // Log error to console
+                        alert('Login failed: ' + data.message);
                     }
-                  //  alert(data.message);
-                } else {
-                    console.error(data.message); // Log error to console
-                    alert('Login failed: ' + data.message);
-                }
-                document.getElementById('submitBtn').disabled = false;
-            })
-            .catch(error => {
-                console.error('Fetch error:', error); // Log fetch error to console
-                alert('An error occurred. Please try again.');
-                document.getElementById('submitBtn').disabled = false;
-            });
+                    document.getElementById('submitBtn').disabled = false;
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error); // Log fetch error to console
+                    alert('An error occurred. Please try again.');
+                    document.getElementById('submitBtn').disabled = false;
+                });
         });
     </script>
 </body>
+
 </html>

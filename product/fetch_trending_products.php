@@ -2,7 +2,7 @@
 header('Content-Type: application/json; charset=utf-8'); 
 include '../connection.php';
 
-$sql = "SELECT name, description, price, brand, image_url FROM products WHERE trending = 1";
+$sql = "SELECT * FROM products WHERE trending = 1";
 $result = $conn->query($sql);
 
 $products = [];
