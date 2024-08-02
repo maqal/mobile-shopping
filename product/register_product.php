@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8'); 
-include '../connection.php'; // Adjust the path to your connection.php file
+include '../connection.php';
 
 $response = array();
 

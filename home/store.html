@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- <link rel="stylesheet" href="../style.css"> Link to your CSS file for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            margin-top: 0;
+        }
+
+        .card button {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .card button:hover {
+            background-color: #0056b3;
+        }
+
+        .tab-content {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .tab-content>div {
+            display: none;
+        }
+
+        .tab-content>div.active {
+            display: block;
+        }
+
+        .tab-buttons {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tab-buttons button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .product-table th,
+        .product-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .product-table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .cart-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+            box-sizing: border-box;
+        }
+
+        .cart-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .cart-card-details {
+            flex: 1;
+            text-align: center;
+        }
+
+        .cart-card-details h5 {
+            margin: 0 0 10px;
+        }
+
+        .cart-card-details p {
+            margin: 5px 0;
+        }
+
+        .cart-card-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .cart-card-buttons button {
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cart-card-buttons button:hover {
+            background-color: #0056b3;
+        }
+
+        .cart-card-buttons button.remove {
+            background-color: #dc3545;
+        }
+
+        .cart-card-buttons button.remove:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card" onclick="showTab('cartTab')">
+            <h2>My Cart</h2>
+            <button>Cart List</button>
+        </div>
+        <div class="card" onclick="showTab('ordersTab')">
+            <h2>Orders</h2>
+            <button>View Orders</button>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <div id="cartTab" class="active">
+            <div id="cartItemsContainer" class="row">
+                <!-- Cart items will be populated here -->
+            </div>
+        </div>
+        <div id="ordersTab">
+            <!-- Content for Orders Tab -->
+            Orders content goes here...
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            fetchCartItems();
+        });
+
+        function fetchCartItems() {
+            fetch('../cart/get_user_cart.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        alert('Failed to fetch cart items: ' + data.message);
+                        return;
+                    }
+
+                    const cartItemsContainer = document.getElementById('cartItemsContainer');
+                    cartItemsContainer.innerHTML = ''; // Clear existing items
+
+                    data.data.forEach(item => {
+                        const totalPrice = item.price * item.quantity;
+
+                        const col = document.createElement('div');
+                        col.classList.add('cart-card');
+
+                        col.innerHTML = `
+                            <img src="../shopping/${item.image_url}" class="product-image" alt="${item.name}">
+                            <div class="cart-card-details">
+                                <h5>${item.name}</h5>
+                                <p>Price: $${item.price}</p>
+                                <p>Quantity: ${item.quantity}</p>
+                                <p>Total: $${totalPrice.toFixed(2)}</p>
+                            </div>
+                            <div class="cart-card-buttons">
+                                <button class="order">Order</button>
+                                <button class="remove" onclick="removeFromCart(${item.product_id})">Remove</button>
+                            </div>
+                        `;
+
+                        cartItemsContainer.appendChild(col);
+                    });
+                })
+                .catch(error => console.error('Error fetching cart items:', error));
+        }
+
+        function removeFromCart(productId) {
+            fetch(`../cart/remove_from_cart.php?product_id=${productId}`, {
+                method: 'DELETE'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Product removed from cart successfully');
+                        fetchCartItems(); // Refresh cart items
+                    } else {
+                        alert('Failed to remove product from cart: ' + data.message);
+                    }
+                })
+                .catch(error => console.error('Error removing product from cart:', error));
+        }
+
+        function showTab(tabId) {
+            // Hide all tab content
+            const tabContents = document.querySelectorAll('.tab-content > div');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            // Show the selected tab content
+            const selectedTab = document.getElementById(tabId);
+            selectedTab.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

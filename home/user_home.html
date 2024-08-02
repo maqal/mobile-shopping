@@ -24,6 +24,7 @@
     <!-- script
     ================================================== -->
     <script src="../assets/js/modernizr.js"></script>
+    
     <style>
         .image-holder {
             width: 100%;
@@ -96,6 +97,21 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
+
+        .logout-btn {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s; 
+            right: 20px;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
     </style>
 </head>
 
@@ -113,7 +129,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="cart.html">
+                                    <a href="store.html">
                                         <i class="icon icon-shopping-cart"></i>
                                     </a>
                                 </li>
@@ -143,16 +159,14 @@
                                                 data-effect="Home">Home</a>
                                         </li>
 
-                                        <li><a href="about.html" class="item-anchor" data-effect="About">About</a></li>
-
                                         <li class="menu-item has-sub">
                                             <a href="#selling-products" class="item-anchor d-flex align-item-center"
                                                 data-effect="Shop">Shop</a>
                                         </li>
-                                        <li><a href="contact.html" class="item-anchor" data-effect="Contact">Contact</a>
+                                       
                                         </li>
-                                        <li><a href="login/login.html" class="item-anchor"
-                                                data-effect="Contact">Logout</a></li>
+                                        <li><button class="logout-btn" onclick="logout()">Logout</button>
+                                            </li>
                                     </ul>
                                 </div>
                             </div>
@@ -655,167 +669,6 @@
         </div>
     </section>
 
-    <section id="flash-sales" class="product-store">
-
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Flash sales</h2>
-            </div>
-            <div class="swiper product-swiper flash-sales overflow-hidden">
-
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="product-item">
-                            <img src="assets/images/selling-products9.jpg" alt="Books" class="product-image">
-                            <div class="cart-concern">
-                                <div class="cart-button d-flex justify-content-between align-items-center">
-                                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to
-                                        cart <i class="icon icon-arrow-io"></i>
-                                    </button>
-                                    <button type="button" class="view-btn tooltip
-                        d-flex">
-                                        <i class="icon icon-screen-full"></i>
-                                        <span class="tooltip-text">Quick view</span>
-                                    </button>
-                                    <button type="button" class="wishlist-btn">
-                                        <i class="icon icon-heart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="discount">10% Off</div>
-                            <div class="product-detail">
-                                <h3 class="product-title">
-                                    <a href="single-product.html">Full sleeve cover shirt</a>
-                                </h3>
-                                <div class="item-price text-primary">
-                                    <del class="prev-price">$50.00</del>$40.00
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="product-item">
-                            <img src="assets/images/selling-products10.jpg" alt="Books" class="product-image">
-                            <div class="cart-concern">
-                                <div class="cart-button d-flex justify-content-between align-items-center">
-                                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to
-                                        cart <i class="icon icon-arrow-io"></i>
-                                    </button>
-                                    <button type="button" class="view-btn tooltip
-                        d-flex">
-                                        <i class="icon icon-screen-full"></i>
-                                        <span class="tooltip-text">Quick view</span>
-                                    </button>
-                                    <button type="button" class="wishlist-btn">
-                                        <i class="icon icon-heart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="discount">10% Off</div>
-                            <div class="product-detail">
-                                <h3 class="product-title">
-                                    <a href="single-product.html">Long Sleeve T-shirt</a>
-                                </h3>
-                                <div class="item-price text-primary">
-                                    <del class="prev-price">$50.00</del>$40.00
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="product-item">
-                            <img src="assets/images/selling-products11.jpg" alt="Books" class="product-image">
-                            <div class="cart-concern">
-                                <div class="cart-button d-flex justify-content-between align-items-center">
-                                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to
-                                        cart <i class="icon icon-arrow-io"></i>
-                                    </button>
-                                    <button type="button" class="view-btn tooltip
-                        d-flex">
-                                        <i class="icon icon-screen-full"></i>
-                                        <span class="tooltip-text">Quick view</span>
-                                    </button>
-                                    <button type="button" class="wishlist-btn">
-                                        <i class="icon icon-heart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="discount">10% Off</div>
-                            <div class="product-detail">
-                                <h3 class="product-title">
-                                    <a href="single-product.html">Grey Check Coat</a>
-                                </h3>
-                                <div class="item-price text-primary">
-                                    <del class="prev-price">$55.00</del>$45.00
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="product-item">
-                            <img src="assets/images/selling-products12.jpg" alt="Books" class="product-image">
-                            <div class="cart-concern">
-                                <div class="cart-button d-flex justify-content-between align-items-center">
-                                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to
-                                        cart <i class="icon icon-arrow-io"></i>
-                                    </button>
-                                    <button type="button" class="view-btn tooltip
-                        d-flex">
-                                        <i class="icon icon-screen-full"></i>
-                                        <span class="tooltip-text">Quick view</span>
-                                    </button>
-                                    <button type="button" class="wishlist-btn">
-                                        <i class="icon icon-heart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="discount">10% Off</div>
-                            <div class="product-detail">
-                                <h3 class="product-title">
-                                    <a href="single-product.html">Silk White Shirt</a>
-                                </h3>
-                                <div class="item-price text-primary">
-                                    <del class="prev-price">$45.00</del>$35.00
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="product-item">
-                            <img src="assets/images/selling-products8.jpg" alt="Books" class="product-image">
-                            <div class="cart-concern">
-                                <div class="cart-button d-flex justify-content-between align-items-center">
-                                    <button type="button" class="btn-wrap cart-link d-flex align-items-center">add to
-                                        cart <i class="icon icon-arrow-io"></i>
-                                    </button>
-                                    <button type="button" class="view-btn tooltip
-                        d-flex">
-                                        <i class="icon icon-screen-full"></i>
-                                        <span class="tooltip-text">Quick view</span>
-                                    </button>
-                                    <button type="button" class="wishlist-btn">
-                                        <i class="icon icon-heart"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="discount">10% Off</div>
-                            <div class="product-detail">
-                                <h3 class="product-title">
-                                    <a href="single-product.html">Blue Jeans pant</a>
-                                </h3>
-                                <div class="item-price text-primary">
-                                    <del class="prev-price">$45.00</del>$35.00
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-
-            </div>
-        </div>
-    </section>
-
     <!-- Add to Cart Modal -->
     <div id="addToCartModal" class="modal">
         <div class="modal-dialog">
@@ -843,108 +696,6 @@
         </div>
     </div>
 
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-menu-list">
-                <div class="row d-flex flex-wrap justify-content-between">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="footer-menu">
-                            <h5 class="widget-title">Ultras</h5>
-                            <ul class="menu-list list-unstyled">
-                                <li class="menu-item">
-                                    <a href="about.html">About us</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Conditions </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="blog.html">Our Journals</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Careers</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Affiliate Programme</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Ultras Press</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="footer-menu">
-                            <h5 class="widget-title">Customer Service</h5>
-                            <ul class="menu-list list-unstyled">
-                                <li class="menu-item">
-                                    <a href="faqs.html">FAQ</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="contact.html">Contact</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Privacy Policy</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Returns & Refunds</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Cookie Guidelines</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Delivery Information</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="footer-menu">
-                            <h5 class="widget-title">Contact Us</h5>
-                            <p>Do you have any questions or suggestions? <a href="#"
-                                    class="email">ourservices@ultras.com</a>
-                            </p>
-                            <p>Do you need assistance? Give us a call. <br>
-                                <strong>+57 444 11 00 35</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="footer-menu">
-                            <h5 class="widget-title">Forever 2018</h5>
-                            <p>Cras mattis sit ornare in metus eu amet adipiscing enim. Ullamcorper in orci, ultrices
-                                integer eget
-                                arcu. Consectetur leo dignissim lacus, lacus sagittis dictumst.</p>
-                            <div class="social-links">
-                                <ul class="d-flex list-unstyled">
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon icon-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon icon-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon icon-youtube-play"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon icon-behance-square"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-    </footer>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             fetchTrendingProducts();
@@ -1153,6 +904,14 @@
                 });
         });
 
+        function logout() {
+            // Clear session storage
+            sessionStorage.clear();
+        
+            // Perform logout by navigating to logout.php
+            window.location.href = '../login/logout.php';
+        }
+        
     </script>
     <script src="../assets/js/jquery-1.11.0.min.js"></script>
     <script src="../assets/js/plugins.js"></script>
