@@ -16,14 +16,16 @@
 
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 20px auto auto 70px;
             padding: 0 20px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
+            position: sticky;
+            top: 0;
         }
 
-        .card {
+       .card {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -98,25 +100,25 @@
             background-color: #0056b3;
         }
 
-        .product-table {
+        .data-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
 
-        .product-table th,
-        .product-table td {
+        .data-table th,
+        .data-table td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
 
-        .product-table th {
+        .data-table th {
             background-color: #f2f2f2;
             font-weight: bold;
         }
 
-        .product-table tbody tr:hover {
+        .data-table tbody tr:hover {
             background-color: #f9f9f9;
         }
 
@@ -201,116 +203,140 @@
         }
 
         /* Button Styles */
-.btn {
-    display: inline-block;
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin: 2px;
-}
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 2px;
+        }
 
-.btn:hover {
-    transform: translateY(-2px);
-}
+        .btn:hover {
+            transform: translateY(-2px);
+        }
 
-.btn-warning {
-    background-color: #ff9800;
-    color: #fff;
-}
+        .btn-warning {
+            background-color: #ff9800;
+            color: #fff;
+        }
 
-.btn-warning:hover {
-    background-color: #e68900;
-}
+        .btn-warning:hover {
+            background-color: #e68900;
+        }
 
-.btn-danger {
-    background-color: #f44336;
-    color: #fff;
-}
+        .btn-danger {
+            background-color: #f44336;
+            color: #fff;
+        }
 
-.btn-danger:hover {
-    background-color: #d32f2f;
-}
+        .btn-danger:hover {
+            background-color: #d32f2f;
+        }
 
-/* Add styles for buttons and modal */
-<!-- .button {
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-} -->
+        /* Add styles for buttons and modal */
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-.update-button {
-    background-color: #4CAF50;
-    color: white;
-}
+        .update-button {
+            background-color: #4CAF50;
+            color: white;
+        }
 
-.delete-button {
-    background-color: #f44336;
-    color: white;
-}
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+        }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-}
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .logout-container {
+            position: sticky;
+            top: 10px; /* Adjust as needed to control the vertical offset */
+            right: 10px; /* Adjust as needed to control the horizontal offset */
+            z-index: 1000; /* Ensure it stays above other elements */
+            padding: 10px; /* Optional: Add padding for better appearance */
+            border-radius: 4px; /* Optional: Add border-radius for rounded corners */
+        }        
+        
+        .logout-button {
+            padding: 10px 20px;
+            background-color: #ff4b5c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-
+        .logout-button:hover {
+            background-color: #ff1a3c;
+        }
     </style>
 </head>
 
 <body>
+    <div class="logout-container">
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
     <div class="container">
         <div class="card" onclick="showTab('productsTab')">
             <h2>Products</h2>
             <button>Products List</button>
         </div>
-        <div class="card" onclick="showTab('ordersTab')">
-            <h2>Orders</h2>
-            <button>View Orders</button>
-        </div>
         <div class="card" onclick="showTab('cartTab')">
             <h2>Cart</h2>
             <button>View Cart</button>
         </div>
+        <div class="card" onclick="showTab('ordersTab')">
+            <h2>Orders</h2>
+            <button>View Orders</button>
+        </div>
+
         <div class="card" onclick="showTab('usersTab')">
             <h2>Users</h2>
             <button>Manage Users</button>
@@ -323,7 +349,7 @@
                 <button onclick="openModal()">Add Product</button>
                 <!-- You can add more buttons here as needed -->
             </div>
-            <table id="productsTable" class="product-table">
+            <table id="productsTable" class="data-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -346,7 +372,7 @@
             Orders content goes here...
         </div>
         <div id="cartTab">
-            <table id="allCartsTable" class="cart-table">
+            <table id="allCartsTable" class="data-table">
                 <thead>
                     <tr>
                         <th>User Name</th>
@@ -365,8 +391,19 @@
             </table>
         </div>
         <div id="usersTab">
-            <!-- Content for Users Tab -->
-            Users content goes here...
+            <table id="usersTable" class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <!-- All users will be populated here -->
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -405,8 +442,8 @@
         </div>
     </div>
 
-     <!-- Delete Confirmation Modal -->
-     <div id="deleteModal" class="modal">
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Are you sure you want to delete this product?</p>
@@ -476,7 +513,8 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             // Fetch and display products when the page loads
             fetchProducts();
-            <!-- fetchAllCarts(); -->
+            fetchAllCarts();
+            fetchAllUsers();
             setupModal();
 
             // Fetch and display products when the productsTab is clicked
@@ -530,8 +568,8 @@
                             <td>${item.product_name}</td>
                             <!-- <td>${item.description}</td> -->
                             <td>${item.quantity}</td>
-                            <td>$${item.price.toFixed(2)}</td>
-                            <td>$${item.total_price.toFixed(2)}</td>
+                            <td>$${item.price}</td>
+                            <td>$${item.total_price}</td>
                             <!-- <td>${item.brand}</td> -->
                             <!-- <td><img src="../shopping/${item.image_url}" class="product-image" alt="${item.product_name}" style="width:50px;height:50px;"></td> -->
                         `;
@@ -542,6 +580,28 @@
                 .catch(error => console.error('Error fetching all carts:', error));
         }
 
+        function fetchAllUsers() {
+            fetch('../user/fetch_all_users.php')
+                .then(response => response.json())
+                .then(data => {
+                    const usersTableBody = document.getElementById('usersTable').querySelector('tbody');
+                    usersTableBody.innerHTML = ''; // Clear existing table rows
+
+                    data.forEach(user => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <!-- <td>${user.id}</td> -->
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>${user.phone}</td>
+                            <td>${user.role}</td>
+                        `;
+                        usersTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Error fetching users:', error));
+        }
+
         function navigateToUpdatePage(productId) {
             window.location.href = `../product/update_product.html?id=${productId}`;
         }
@@ -549,34 +609,34 @@
         function confirmDelete(id) {
             const deleteModal = document.getElementById('deleteModal');
             const confirmDeleteButton = document.getElementById('confirmDelete');
-            
+
             // Store the product id in a data attribute for later use
             confirmDeleteButton.setAttribute('data-id', id);
-            
+
             // Show the modal
             deleteModal.style.display = 'block';
         }
-        
+
 
         function setupModal() {
             const deleteModal = document.getElementById('deleteModal');
             const closeModal = deleteModal.querySelector('.close');
             const cancelDeleteButton = document.getElementById('cancelDelete');
             const confirmDeleteButton = document.getElementById('confirmDelete');
-        
+
             closeModal.onclick = () => {
                 deleteModal.style.display = 'none';
             }
-        
+
             cancelDeleteButton.onclick = () => {
                 deleteModal.style.display = 'none';
             }
-        
+
             confirmDeleteButton.onclick = () => {
                 const productId = confirmDeleteButton.getAttribute('data-id');
                 deleteProduct(productId);
             }
-        
+
             window.onclick = (event) => {
                 if (event.target == deleteModal) {
                     deleteModal.style.display = 'none';
@@ -599,6 +659,14 @@
                     }
                 })
                 .catch(error => console.error('Error deleting product:', error));
+        }
+
+        function logout() {
+            // Clear session storage
+            sessionStorage.clear();
+
+            // Perform logout by navigating to logout.php
+            window.location.href = '../login/logout.php';
         }
 
     </script>
